@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  chess-engine:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+      - SESSION_SECRET=chess-engine-secret-key
+    volumes:
+      - .:/app
+      - /app/node_modules
+    restart: unless-stopped
